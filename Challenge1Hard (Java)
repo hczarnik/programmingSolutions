@@ -1,0 +1,54 @@
+import java.util.Random;
+import java.util.Scanner;
+/**
+ * From website: Challenge 1 (Hard)
+ * we all know the classic "guessing game" with higher or lower prompts.
+ * lets do a role reversal; you create a program that will guess numbers between 1-100, and respond appropriately based on whether users say that the number is too high or too low.
+ * Try to make a program that can guess your number based on user input and great code!
+ */
+public class GuessingGame{
+    static String userResponse="";
+    static Scanner input = new Scanner(System.in);
+    static Random rand = new Random();
+    static int lowNum = 1;
+    static int highNum = 100;
+    static String isNum = "yes";
+    static String tooLow = "low";
+    static String tooHigh = "high";
+    private static void setLow(int low){
+        lowNum = low;
+    }
+    private static void setHigh(int high){
+        highNum = high;
+    }
+    public static void main(String[] args){
+        chooseNum();
+    }
+    private static void chooseNum(){
+        boolean foundNum=false;
+        int counter = 0;
+        while(foundNum == false){
+            int computerNum = lowNum + rand.nextInt(highNum - lowNum + 1);
+            System.out.println("Generated number: " + computerNum + " . Is this your number? If yes, type 'yes'. If the number is too high, type 'high'. If the number is too low, type 'low'.");
+            userResponse = input.next();
+            
+            if(userResponse.equals(isNum)){
+                counter++;
+                System.out.println("Computer guessed correctly! It took the computer " + counter + " tries to guess your number. The program will now end.");
+                foundNum = true;
+            }
+            else if(userResponse.equals(tooLow)){
+                setLow(computerNum);
+                counter++;
+            }
+            else if(userResponse.equals(tooHigh)){
+                setHigh(computerNum);
+                counter++;
+            }
+            else{
+                System.out.println("Error, incorrect entry.");
+                break;
+            }
+        }
+    }
+}
