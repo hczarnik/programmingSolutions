@@ -13,6 +13,7 @@ public class Challenge1Easy {
 	String userName = "";			  //Used to hold the user's username
 	int age;				  //Used to hold the user's age
 	
+	//Ask user for information such as name, age, and username
 	System.out.println("Enter your name: ");	
 	name = input.next();
 	System.out.println("Enter your age: ");
@@ -20,6 +21,7 @@ public class Challenge1Easy {
 	System.out.println("Enter your username: ");
 	userName = input.next();
 
+	//Print out name, age, and username that was previously entered
 	System.out.println("Your name is " + name + ", you are " + age + " years old, and your username is " + userName + ".");
 	}
 }
