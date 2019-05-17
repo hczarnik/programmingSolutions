@@ -15,18 +15,24 @@ public class GuessingGame{
     static String isNum = "yes";
     static String tooLow = "low";
     static String tooHigh = "high";
+    
+    //Set the lowest boundary that the random number can go to
     private static void setLow(int low){
         lowNum = low;
     }
+    
+    //Set the highest boundary that the random number can go to
     private static void setHigh(int high){
         highNum = high;
     }
+    
+    //Used to start the number-guessing function
     public static void main(String[] args){
         chooseNum();
     }
     private static void chooseNum(){
-        boolean foundNum=false;
-        int counter = 0;
+        boolean foundNum=false; //Will be false until the user says that the computer has guessed their number
+        int counter = 0;        //Counts how many times it takes for the computer to guess the user's number
         while(foundNum == false){
             int computerNum = lowNum + rand.nextInt(highNum - lowNum + 1);
             System.out.println("Generated number: " + computerNum + " . Is this your number? If yes, type 'yes'. If the number is too high, type 'high'. If the number is too low, type 'low'.");
@@ -37,10 +43,13 @@ public class GuessingGame{
                 System.out.println("Computer guessed correctly! It took the computer " + counter + " tries to guess your number. The program will now end.");
                 foundNum = true;
             }
+            //If number is too low, set random number to lowest boundary
             else if(userResponse.equals(tooLow)){
                 setLow(computerNum);
                 counter++;
             }
+            
+            //If number is too high, set random number to highest boundary
             else if(userResponse.equals(tooHigh)){
                 setHigh(computerNum);
                 counter++;
